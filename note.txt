@@ -1,0 +1,37 @@
+PyTorch is built around tensors, which are like NumPy arrays but with GPU support.
+
+You used torch to:
+
+Create label tensors (torch.tensor(labels, dtype=torch.long)).
+
+Build feature vectors (torch.zeros(len(vocab))).
+
+Move data to GPU (batch_x.to(device)).
+
+Without tensors, your model couldn’t train efficiently on large datasets or use GPU acceleration.
+2
+torch.utils.data.Dataset & DataLoader
+
+Dataset → lets you define how to store and fetch samples (your NepaliTweetDataset).
+
+DataLoader → automatically:
+
+Breaks dataset into mini-batches.
+
+Shuffles data each epoch.
+
+Feeds batches to the model.
+
+👉 This makes training faster and more memory efficient than looping over all samples at once.
+3
+3. torch.nn → Neural Network Modules
+
+You created LogisticRegressionPyTorch using nn.Module.
+
+nn.Linear is the logistic regression layer (a weighted sum + bias).
+
+nn.CrossEntropyLoss → handles softmax + log loss for multi-class classification.
+
+👉 Instead of writing math manually, PyTorch gives you ready-to-use layers and loss functions.
+
+We did not use any library function that directly implements logistic regression. Instead, we used PyTorch only as a numerical framework — to handle tensors, batching, and automatic differentiation. The actual logistic regression model (one linear layer + softmax + cross-entropy loss) and the training loop were implemented by us. If we wanted, we could have written it in NumPy, but PyTorch makes it easier to extend and run on GPU for larger datasets.”
